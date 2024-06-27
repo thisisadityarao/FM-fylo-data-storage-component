@@ -98,3 +98,83 @@ h6 {
   --dark-blue: hsl(228, 56%, 26%);
   --very-dark-blue: hsl(229, 57%, 11%);
 }
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 0.875rem; /* 14px */
+  color: var(--pale-blue);
+  background: url("./images/bg-mobile.png") no-repeat;
+  background-position: center;
+}
+
+main {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.file-upload,
+.storage-total {
+  background-color: var(--dark-blue);
+  padding: 2rem;
+  border-radius: 0.75rem;
+}
+
+.file-upload {
+  border-top-right-radius: 7rem;
+}
+
+.file-upload__links {
+  display: flex;
+  gap: 1rem;
+}
+
+.file-upload__links div {
+  width: 2.85rem;
+  height: 2.85rem;
+  background-color: var(--very-dark-blue);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-start: 2rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.storage-total {
+  position: relative;
+}
+
+progress {
+  margin-block-start: 1rem;
+}
+
+.storage-left {
+  position: absolute;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.storage-left p {
+  color: var(--grayish-blue);
+}
+
+.storage-left span {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--very-dark-blue);
+}
