@@ -40,21 +40,24 @@
           <img src="./images/logo.svg" alt="">
         </div>
         <div class="file-upload__links">
-          <div><img src="./images/icon-document.svg" alt=""></div>
-          <div><img src="./images/icon-folder.svg" alt=""></div>
-          <div><img src="./images/icon-upload.svg" alt=""></div>
+          <a title="Document"><img src="./images/icon-document.svg" alt=""></a>
+          <a title="Folder"><img src="./images/icon-folder.svg" alt=""></a>
+          <a title="Upload"><img src="./images/icon-upload.svg" alt=""></a>
         </div>
       </div>
 
       <div class="storage-total">
-        <label>You’ve used <span class="bold">815 GB</span> of your storage</label>
-        <progress max="100" value="60">60%</progress>
+        <label>
+          <p>You’ve used <span class="bold">815 GB</span> of your storage</p>
+        </label>
+        <progress max="100" value="75">75%</progress>
         <div class="progress-label">
-          <span class="storage-total__min">0 GB</span>
-          <span class="storage-total__max">1000 GB</span>
+          <span class="storage-total__min bold">0 GB</span>
+          <span class="storage-total__max bold">1000 GB</span>
         </div>
-        <div class="storage-left">
-          <p><span>185</span> GB Left</p>
+        <div class="storage-left tooltip">
+          <span class="number bold">185</span>
+          <span class="text bold">GB Left</span>
         </div>
       </div>
     </div>

@@ -89,10 +89,7 @@ h6 {
 /*** Custom Properties ***/
 
 :root {
-  --gradient: linear-gradient(
-    to right,
-    hsl(6, 100%, 80%) to hsl(335, 100%, 65%)
-  );
+  --gradient: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
   --pale-blue: hsl(243, 100%, 93%);
   --grayish-blue: hsl(229, 7%, 55%);
   --dark-blue: hsl(228, 56%, 26%);
@@ -107,6 +104,7 @@ body {
   color: var(--pale-blue);
   background: url("./images/bg-mobile.png") no-repeat;
   background-position: center;
+  background-size: cover;
 }
 
 main {
@@ -117,7 +115,6 @@ main {
 }
 
 .container {
-  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -126,7 +123,7 @@ main {
 .file-upload,
 .storage-total {
   background-color: var(--dark-blue);
-  padding: 2rem;
+  padding: 2rem 2.75rem;
   border-radius: 0.75rem;
 }
 
@@ -139,9 +136,12 @@ main {
   gap: 1rem;
 }
 
-.file-upload__links div {
-  width: 2.85rem;
-  height: 2.85rem;
+.file-upload__links a {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  width: 3rem;
+  height: 3rem;
   background-color: var(--very-dark-blue);
   border-radius: 0.5rem;
   display: flex;
@@ -158,23 +158,162 @@ main {
   position: relative;
 }
 
-progress {
+.storage-total label p {
+  text-align: center;
+}
+
+progress[value] {
   margin-block-start: 1rem;
+  position: relative;
+
+  --color: var(--gradient); /* the progress color */
+  --background: var(--very-dark-blue); /* the background color */
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 3px solid #000;
+  width: 16rem;
+  height: 1.25rem;
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-bar {
+  border-radius: 10em;
+  background: var(--background);
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 10em;
+  background: var(--color);
+}
+progress[value]::-moz-progress-bar {
+  border-radius: 10em;
+  background: var(--color);
+}
+
+progress[value]:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 10.85rem;
+  top: 1px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 0.25rem;
+  margin-block-end: 1rem;
 }
 
 .storage-left {
   position: absolute;
   background-color: #fff;
-  padding: 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  left: 5.2rem;
 }
 
-.storage-left p {
+.storage-left .text {
   color: var(--grayish-blue);
+  text-transform: uppercase;
+  margin-top: 2px;
+  font-size: 0.75rem;
 }
 
-.storage-left span {
-  font-weight: 700;
-  font-size: 1.25rem;
+.storage-left .number {
+  font-size: 2.5rem;
   color: var(--very-dark-blue);
+}
+
+/**** MEDIA QUERIES ****/
+
+@media (min-width: 62.5rem) {
+  .container {
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .file-upload,
+  .storage-total {
+    padding: 2rem 3.5rem;
+  }
+
+  .file-upload {
+    width: 22rem;
+    padding: 2.5rem 2.75rem;
+  }
+
+  .file-upload-logo img {
+    height: 45px;
+  }
+
+  .file-upload__links {
+    gap: 1.1rem;
+  }
+
+  .storage-total label p {
+    text-align: left;
+  }
+
+  progress[value] {
+    width: 100%;
+  }
+
+  progress[value]:before {
+    left: 19.85rem;
+    top: 1px;
+  }
+
+  .progress-label {
+    margin-block-end: 0;
+  }
+
+  .storage-total {
+    width: 35rem;
+  }
+
+  .storage-left {
+    top: -3rem;
+    left: 21rem;
+  }
+
+  .storage-left .number {
+    line-height: 1;
+  }
+
+  .tooltip {
+    /* triangle dimension */
+    --b: 2rem; /* base */
+    --h: 1rem; /* height */
+
+    --p: 100%; /* triangle position (0%:left 100%:right) */
+    --r: 0.75rem; /* the radius */
+    --c: #fff;
+
+    padding: 1rem;
+    border-radius: var(--r) var(--r)
+      min(var(--r), 100% - var(--p) - var(--b) / 2)
+      min(var(--r), var(--p) - var(--b) / 2) / var(--r);
+    clip-path: polygon(
+      0 100%,
+      0 0,
+      100% 0,
+      100% 100%,
+      min(100%, var(--p) + var(--b) / 2) 100%,
+      var(--p) calc(100% + var(--h)),
+      max(0%, var(--p) - var(--b) / 2) 100%
+    );
+    background: var(--c);
+    border-image: conic-gradient(var(--c) 0 0) fill 0 / var(--r)
+      calc(100% - var(--p) - var(--b) / 2) 0 calc(var(--p) - var(--b) / 2) / 0 0
+      var(--h) 0;
+  }
 }
