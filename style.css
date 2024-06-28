@@ -137,11 +137,15 @@ main {
 }
 
 .file-upload__links a {
-  display: block;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+  cursor: pointer;
+
   width: 3rem;
   height: 3rem;
+  min-height: 44px;
   background-color: var(--very-dark-blue);
   border-radius: 0.5rem;
   display: flex;
@@ -236,6 +240,9 @@ progress[value]:before {
 /**** MEDIA QUERIES ****/
 
 @media (min-width: 62.5rem) {
+  body {
+    background-image: url("./images/bg-desktop.png") no-repeat;
+  }
   .container {
     flex-direction: row;
     align-items: end;
