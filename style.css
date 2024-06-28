@@ -162,7 +162,7 @@ main {
   position: relative;
 }
 
-.storage-total label p {
+.storage-total p {
   text-align: center;
 }
 
@@ -241,7 +241,9 @@ progress[value]:before {
 
 @media (min-width: 62.5rem) {
   body {
-    background-image: url("./images/bg-desktop.png") no-repeat;
+    background-image: url("./images/bg-desktop.png");
+    background-position: right bottom;
+    background-size: cover;
   }
   .container {
     flex-direction: row;
@@ -266,7 +268,7 @@ progress[value]:before {
     gap: 1.1rem;
   }
 
-  .storage-total label p {
+  .storage-total p {
     text-align: left;
   }
 
